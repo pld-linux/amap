@@ -2,7 +2,7 @@ Summary:	Amap - a next-generation scanning tool
 Summary(pl):	Amap - skaner "nastêpnej generacji"
 Name:		amap
 Version:	4.7
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Networking
 Source0:	http://thc.org/releases/%{name}-%{version}.tar.gz
