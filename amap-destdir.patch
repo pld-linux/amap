@@ -1,0 +1,17 @@
+--- amap-4.7/Makefile.am.fix	2004-12-11 22:05:34.373145128 +0000
++++ amap-4.7/Makefile.am	2004-12-11 22:07:04.351466344 +0000
+@@ -28,10 +28,10 @@
+ 	$(CC) $(OPT_DEBUG) -o amapcrap amapcrap.c $(XLIBS) $(XLIBPATHS) $(XIPATHS) $(XDEFINES)
+ 
+ install:	all
+-	@echo Installing to $(PREFIX)$(DIR), change this by running ./configure --prefix=path
+-	-mkdir -vp $(PREFIX)$(DIR) 2> /dev/null
+-	cp amap amapcrap $(SCRIPTS) $(PREFIX)$(DIR)
+-	cp $(MANPAGE) $(MANDIR)
++	@echo Installing to $(DESTDIR)$(PREFIX)$(DIR), change this by running ./configure --prefix=path
++	-mkdir -vp $(DESTDIR)$(PREFIX)$(DIR) 2> /dev/null
++	cp amap amapcrap $(SCRIPTS) $(DESTDIR)$(PREFIX)$(DIR)
++	cp $(MANPAGE) $(DESTDIR)$(MANDIR)
+ 
+ clean:	
+ 	cd pcre-3.9 && make clean

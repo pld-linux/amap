@@ -1,0 +1,38 @@
+--- amap-4.7/amap.h.fix	2004-12-11 23:04:05.412386032 +0000
++++ amap-4.7/amap.h	2004-12-11 23:04:42.033818728 +0000
+@@ -29,11 +29,11 @@
+   #warning "PREFIX definition found, installing to this prefix directory location"
+   #define AMAP_PREFIX         PREFIX
+  #else
+-  #define AMAP_PREFIX         "/usr/local"
++  #define AMAP_PREFIX         "/usr"
+  #endif
+ #endif
+ 
+-#define AMAP_APPDEF_PATH	AMAP_PREFIX"/bin"
++#define AMAP_APPDEF_PATH	AMAP_PREFIX"/share/amap"
+ #define AMAP_BUFSIZE		1024	// standard buffer size
+ #define AMAP_BUFSIZE_BIG	65536   // big standard buffer size
+ #define AMAP_REGEX_OPTIONS	( PCRE_MULTILINE | PCRE_CASELESS | PCRE_DOTALL )
+--- amap-4.7/Makefile.am.fix	2004-12-11 23:19:55.632930552 +0000
++++ amap-4.7/Makefile.am	2004-12-11 23:20:09.084885544 +0000
+@@ -5,6 +5,7 @@
+ DIR=/bin
+ SCRIPTS=appdefs.trig appdefs.resp appdefs.rpc
+ MANPAGE=amap.1
++DATADIR=/share/amap
+ all:	pcre strip
+ 
+ pcre:
+@@ -30,7 +31,10 @@
+ install:	all
+ 	@echo Installing to $(DESTDIR)$(PREFIX)$(DIR), change this by running ./configure --prefix=path
+ 	-mkdir -vp $(DESTDIR)$(PREFIX)$(DIR) 2> /dev/null
+-	cp amap amapcrap $(SCRIPTS) $(DESTDIR)$(PREFIX)$(DIR)
++	mkdir -p $(DESTDIR)$(PREFIX)$(DATADIR)
++	mkdir -p $(DESTDIR)$(MANDIR)
++	cp amap amapcrap $(DESTDIR)$(PREFIX)$(DIR)
++	cp $(SCRIPTS) $(DESTDIR)$(PREFIX)$(DATADIR)
+ 	cp $(MANPAGE) $(DESTDIR)$(MANDIR)
+ 
+ clean:	
