@@ -1,5 +1,5 @@
-Summary:	Amap is a next-generation scanning tool
-Summary(pl):	Amap jest skanerem "nastêpnej generacji"
+Summary:	Amap - a next-generation scanning tool
+Summary(pl):	Amap - skaner "nastêpnej generacji"
 Name:		amap
 Version:	4.7
 Release:	0.1
@@ -19,7 +19,7 @@ creating a bogus-communication and analyzing the responses.
 
 %description -l pl
 Amap jest skanerem "nastêpnej generacji", który identyfikuje aplikacje
-i serwisy nawet gdy nie nasluchuj± na domy¶lnych portach poprzez
+i us³ugi nawet gdy nie nas³uchuj± na domy¶lnych portach poprzez
 tworzenie pseudo komunikacji i analizie odpowiedzi.
 
 %prep
@@ -46,5 +46,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES README TODO
 %attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/amap.1.gz
+%{_mandir}/man1/amap.1*
 %{_datadir}/%{name}
