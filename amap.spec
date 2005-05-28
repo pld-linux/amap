@@ -10,6 +10,7 @@ Source0:	http://thc.org/releases/%{name}-%{version}.tar.gz
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-path.patch
 URL:		http://www.thc.org/
+BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
