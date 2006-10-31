@@ -1,15 +1,15 @@
 Summary:	Amap - a next-generation scanning tool
 Summary(pl):	Amap - skaner "nastêpnej generacji"
 Name:		amap
-Version:	4.7
+Version:	5.2
 Release:	1
 License:	GPL
 Group:		Networking
-Source0:	http://thc.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	c2ce244321b0b7b5eb28fdc785452b9a
+Source0:	http://thc.segfault.net/releases/%{name}-%{version}.tar.gz
+# Source0-md5:	e3b1f5ebd24aac03aacb38ec183eb426
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-path.patch
-URL:		http://www.thc.org/
+URL:		http://thc.segfault.net/thc-amap/
 BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,7 +29,8 @@ tworzenie pseudo komunikacji i analizie odpowiedzi.
 %patch1 -p1
 
 %build
-./configure
+./configure \
+	--prefix=%{_prefix}
 %{__make} strip
 
 %install
@@ -37,6 +38,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
+	DATADIR=%{_datadir}/%{name} \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir}/man1
 
