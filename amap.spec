@@ -1,5 +1,5 @@
 Summary:	Amap - a next-generation scanning tool
-Summary(pl.UTF-8):   Amap - skaner "następnej generacji"
+Summary(pl.UTF-8):	Amap - skaner "następnej generacji"
 Name:		amap
 Version:	5.2
 Release:	1
