@@ -1,5 +1,5 @@
 Summary:	Amap - a next-generation scanning tool
-Summary(pl):	Amap - skaner "nastêpnej generacji"
+Summary(pl.UTF-8):   Amap - skaner "nastÄ™pnej generacji"
 Name:		amap
 Version:	5.2
 Release:	1
@@ -18,9 +18,9 @@ Amap is a next-generation scanning tool, which identifies applications
 and services even if they are not listening on the default port by
 creating a bogus-communication and analyzing the responses.
 
-%description -l pl
-Amap jest skanerem "nastêpnej generacji", który identyfikuje aplikacje
-i us³ugi nawet gdy nie nas³uchuj± na domy¶lnych portach poprzez
+%description -l pl.UTF-8
+Amap jest skanerem "nastÄ™pnej generacji", ktÃ³ry identyfikuje aplikacje
+i usÅ‚ugi nawet gdy nie nasÅ‚uchujÄ… na domyÅ›lnych portach poprzez
 tworzenie pseudo komunikacji i analizie odpowiedzi.
 
 %prep
