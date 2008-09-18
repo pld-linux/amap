@@ -5,11 +5,15 @@ Version:	5.2
 Release:	1
 License:	GPL
 Group:		Networking
-Source0:	http://thc.segfault.net/releases/%{name}-%{version}.tar.gz
+Source0:	http://freeworld.thc.org/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	e3b1f5ebd24aac03aacb38ec183eb426
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-path.patch
-URL:		http://thc.segfault.net/thc-amap/
+Patch2:		%{name}-ldflags.patch
+Patch3:		%{name}-new-homepage.patch
+Patch4:		%{name}-system-pcre.patch
+URL:		http://www.thc.org/thc-amap/
+BuildRequires:	openssl-devel
 BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,20 +31,24 @@ tworzenie pseudo komunikacji i analizie odpowiedzi.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 ./configure \
 	--prefix=%{_prefix}
-%{__make} strip
+
+%{__make} \
+	CC="%{__cc}" \
+	OPT="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	DATADIR=%{_datadir}/%{name} \
-	PREFIX=%{_prefix} \
-	MANDIR=%{_mandir}/man1
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
