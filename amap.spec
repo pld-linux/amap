@@ -2,7 +2,7 @@ Summary:	Amap - a next-generation scanning tool
 Summary(pl.UTF-8):	Amap - skaner "następnej generacji"
 Name:		amap
 Version:	5.2
-Release:	2
+Release:	3
 License:	GPL v2 with exceptions (see LICENCE.AMAP)
 Group:		Networking
 Source0:	http://freeworld.thc.org/releases/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Patch4:		%{name}-system-pcre.patch
 URL:		http://www.thc.org/thc-amap/
 BuildRequires:	openssl-devel
 BuildRequires:	pcre-devel
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,6 +35,7 @@ tworzenie pseudo komunikacji i analizie odpowiedzi.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%{__sed} -i 's@LIBDIRS=.*@LIBDIRS="%{_libdir} %{_libdir}/openssl"@' configure
 
 %build
 ./configure \
