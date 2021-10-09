@@ -1,6 +1,25 @@
-diff -urN amap-5.2/amap-inc.h amap-5.2.new/amap-inc.h
---- amap-5.2/amap-inc.h	2003-10-29 23:37:41.000000000 +0100
-+++ amap-5.2.new/amap-inc.h	2008-09-18 18:54:40.000000000 +0200
+diff -urNp -x '*.orig' amap-5.2.org/Makefile.am amap-5.2/Makefile.am
+--- amap-5.2.org/Makefile.am	2021-10-09 23:44:55.647512366 +0200
++++ amap-5.2/Makefile.am	2021-10-09 23:44:55.674178998 +0200
+@@ -1,5 +1,5 @@
+ CC=gcc
+-LIB=-lpcre -L./pcre-3.9/ -I./pcre-3.9/
++LIB=-lpcre
+ OPT=-O2
+ OPT_DEBUG=-ggdb -Wall -lefence
+ BINDIR=/bin
+@@ -7,7 +7,7 @@ DATADIR=/share/amap
+ MANDIR=/share/man/man1
+ SCRIPTS=appdefs.trig appdefs.resp appdefs.rpc
+ MANPAGE=amap.1
+-all:	pcre strip
++all:	amap amapcrap
+ 
+ pcre:
+ 	cd pcre-3.9 && make
+diff -urNp -x '*.orig' amap-5.2.org/amap-inc.h amap-5.2/amap-inc.h
+--- amap-5.2.org/amap-inc.h	2003-10-29 23:37:41.000000000 +0100
++++ amap-5.2/amap-inc.h	2021-10-09 23:44:55.674178998 +0200
 @@ -20,7 +20,7 @@
  #include <errno.h>
  #include <sys/resource.h>
@@ -10,10 +29,10 @@ diff -urN amap-5.2/amap-inc.h amap-5.2.new/amap-inc.h
  #ifdef OPENSSL
   #include <openssl/ssl.h>
   #include <openssl/err.h>
-diff -urN amap-5.2/configure amap-5.2.new/configure
---- amap-5.2/configure	2005-06-03 15:34:19.000000000 +0200
-+++ amap-5.2.new/configure	2008-09-18 18:54:57.000000000 +0200
-@@ -13,10 +13,6 @@
+diff -urNp -x '*.orig' amap-5.2.org/configure amap-5.2/configure
+--- amap-5.2.org/configure	2005-06-03 15:34:19.000000000 +0200
++++ amap-5.2/configure	2021-10-09 23:44:55.674178998 +0200
+@@ -13,10 +13,6 @@ if [ "$1" = "--help" ]; then
    exit 0
  fi
  
@@ -24,22 +43,3 @@ diff -urN amap-5.2/configure amap-5.2.new/configure
  echo
  echo
  echo "Starting amap auto configuration ..."
-diff -urN amap-5.2/Makefile.am amap-5.2.new/Makefile.am
---- amap-5.2/Makefile.am	2005-09-22 17:39:18.000000000 +0200
-+++ amap-5.2.new/Makefile.am	2008-09-18 18:55:34.000000000 +0200
-@@ -1,5 +1,5 @@
- CC=gcc
--LIB=-lpcre -L./pcre-3.9/ -I./pcre-3.9/
-+LIB=-lpcre
- OPT=-O2
- OPT_DEBUG=-ggdb -Wall -lefence
- BINDIR=/bin
-@@ -7,7 +7,7 @@
- MANDIR=/man/man1
- SCRIPTS=appdefs.trig appdefs.resp appdefs.rpc
- MANPAGE=amap.1
--all:	pcre strip
-+all:	amap amapcrap
- 
- pcre:
- 	cd pcre-3.9 && make
